@@ -136,7 +136,7 @@ ImageDataGenerator(
 ### Courbes Accuracy & Loss
 
 <p align="center">
-  <img src="Images/4.png" width="750"/>
+  <img src="Images/5.png" width="750"/>
 </p>
 
 > 📌 Les courbes montrent une bonne convergence du modèle et une réduction progressive de la loss.
@@ -153,7 +153,7 @@ ImageDataGenerator(
 ### Matrice de Confusion
 
 <p align="center">
-  <img src="Images/5.png" width="600"/>
+  <img src="Images/4.png" width="600"/>
 </p>
 
 |                         | Prédit : With Mask | Prédit : Without Mask |
