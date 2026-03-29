@@ -171,6 +171,18 @@ ImageDataGenerator(
 | **Global**       | **~0.95** | **~0.95** | **~0.95** | ~1800   |
 
 
+### Prédictions sur images aléatoires
+
+<p align="center">
+  <img src="Images/6.png" width="850"/>
+</p>
+
+### Test en temps réel
+
+<p align="center">
+  <img src="Images/7.png" width="850"/>
+</p>
+
 ## 🔑 Concepts Clés Appliqués
 
 | Concept               | Description                         |
