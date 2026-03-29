@@ -102,3 +102,96 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
+
+
+
+
+## ⚙️ Logique — Data Augmentation
+
+Pour éviter l'overfitting et enrichir le dataset artificiellement :
+
+```python
+ImageDataGenerator(
+    rescale            = 1./255,   # Normalisation [0-1]
+    rotation_range     = 20,       # Rotation aléatoire
+    width_shift_range  = 0.1,      # Décalage horizontal
+    height_shift_range = 0.1,      # Décalage vertical
+    shear_range        = 0.1,      # Cisaillement
+    zoom_range         = 0.1,      # Zoom
+    horizontal_flip    = True,     # Miroir horizontal
+    validation_split   = 0.2       # 20% pour validation
+)
+```
+
+## 🔨 Entraînement
+
+### Logs d'entraînement (10 epochs)
+
+<p align="center">
+  <img src="Images/3.png" width="750"/>
+</p>
+
+## 📊 Résultats
+
+### Courbes Accuracy & Loss
+
+<p align="center">
+  <img src="Images/4.png" width="750"/>
+</p>
+
+> 📌 Les courbes montrent une bonne convergence du modèle et une réduction progressive de la loss.
+
+### 🎯 Évaluation Finale sur données de Test
+
+| Métrique               | Valeur |
+| ---------------------- | ------ |
+| **Accuracy**           | ~95%   |
+| **Stabilité courbes**  | Bonne  |
+| **Epochs nécessaires** | 10     |
+
+
+### Matrice de Confusion
+
+<p align="center">
+  <img src="Images/5.png" width="600"/>
+</p>
+
+|                         | Prédit : With Mask | Prédit : Without Mask |
+| ----------------------- | ------------------ | --------------------- |
+| **Réel : With Mask**    | 850 ✅              | 50 ❌                  |
+| **Réel : Without Mask** | 45 ❌               | 855 ✅                 |
+
+
+### Rapport de Classification
+
+| Classe           | Precision | Recall    | F1-Score  | Support |
+| ---------------- | --------- | --------- | --------- | ------- |
+| **With Mask**    | ~0.95     | ~0.94     | ~0.94     | ~900    |
+| **Without Mask** | ~0.95     | ~0.95     | ~0.95     | ~900    |
+| **Global**       | **~0.95** | **~0.95** | **~0.95** | ~1800   |
+
+
+## 🔑 Concepts Clés Appliqués
+
+| Concept               | Description                         |
+| --------------------- | ----------------------------------- |
+| **CNN**               | Extraction automatique des features |
+| **Convolution**       | Détection des motifs visuels        |
+| **Pooling**           | Réduction de dimension              |
+| **Dropout**           | Réduction de l’overfitting          |
+| **Sigmoid**           | Classification binaire              |
+| **Data Augmentation** | Amélioration de la généralisation   |
+| **Confusion Matrix**  | Analyse des erreurs                 |
+
+
+
+
+
+
+
+
+
+
+
+
+
