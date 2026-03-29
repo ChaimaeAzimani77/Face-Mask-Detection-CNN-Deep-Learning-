@@ -48,7 +48,7 @@ avec des **résultats fiables** et une **bonne capacité de généralisation**.
 |---|---|
 | **Taille des images** | 128 × 128 pixels |
 | **Batch size** | 32 |
-| **Epochs** | 10 |
+| **Epochs** | 15 |
 | **Optimizer** | Adam |
 | **Loss function** | Binary Crossentropy |
 | **Métrique** | Accuracy |
@@ -147,7 +147,7 @@ ImageDataGenerator(
 | ---------------------- | ------ |
 | **Accuracy**           | ~95%   |
 | **Stabilité courbes**  | Bonne  |
-| **Epochs nécessaires** | 10     |
+| **Epochs nécessaires** | 15     |
 
 
 ### Matrice de Confusion
