@@ -158,8 +158,8 @@ ImageDataGenerator(
 
 |                         | Prédit : With Mask | Prédit : Without Mask |
 | ----------------------- | ------------------ | --------------------- |
-| **Réel : With Mask**    | 850 ✅              | 50 ❌                  |
-| **Réel : Without Mask** | 45 ❌               | 855 ✅                 |
+| **Réel : With Mask**    | 739 ✅              | 6  ❌                  |
+| **Réel : Without Mask** |  1 ❌               | 764 ✅                 |
 
 
 ### Rapport de Classification
