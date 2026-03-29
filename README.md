@@ -1,78 +1,77 @@
 # 😷 Face Mask Detection — CNN (Deep Learning)
 
 > **Mini-Projet Deep Learning** — ENSA d'Oujda | Filière GSEIR-4 | 2025/2026  
-> Classification d’images de visages avec ou sans masque à l’aide d’un **CNN**
-
----
+> Classification binaire d'images de visages avec ou sans masque à l’aide d’un CNN
 
 ## 👩‍💻 Réalisé par 
 
 - **El Azimani Chaimae**
-- *(ajoute ton binôme si nécessaire)*
-
----
+- **Bouras Jihane**
 
 ## 📌 Problématique
 
-Dans le contexte post-pandémie, la détection automatique du port du masque est essentielle pour renforcer les mesures sanitaires.
+Les systèmes de vision par ordinateur permettent d'automatiser la détection du port du masque dans les espaces publics.
 
-Un modèle basé sur **CNN (Convolutional Neural Network)** est utilisé pour classifier automatiquement les images en :
+Un **CNN standard** peut présenter des limites comme l’overfitting ou une instabilité des performances.
+Ce projet propose un modèle basé sur un **Convolutional Neural Network (CNN)** capable de classifier automatiquement une image en :
 
 - 😷 **With Mask** — Masque porté  
 - ❌ **Without Mask** — Pas de masque  
 
-Le défi principal est d’obtenir un modèle **précis**, **robuste** et capable de **généraliser**.
-
----
+avec des **résultats fiables** et une **bonne capacité de généralisation**.
 
 ## 🎯 Objectifs
 
 - Implémenter un **CNN from scratch**
-- Classifier des images en **2 classes (Mask / No Mask)**
-- Utiliser le **Data Augmentation**
-- Évaluer le modèle avec :
-  - Accuracy / Loss
-  - Matrice de confusion
-  - Rapport de classification
-
----
+- Classifier automatiquement les images en 2 classes
+- Utiliser le **Data Augmentation** pour améliorer les performances
+- Évaluer le modèle via courbes, matrice de confusion et rapport de classification
 
 ## 📊 Dataset
 
-| Split | Description |
+| Split | Nombre d'images |
 |---|---|
-| **Entraînement** | Apprentissage du modèle |
-| **Validation** | Ajustement |
-| **Test** | Évaluation finale |
-| **Classes** | `with_mask` / `without_mask` |
+| **Entraînement (80%)** | ~5 000 images |
+| **Validation (20%)** | ~1 250 images |
+| **Test** | ~1 500 images |
+| **Classes** | `with_mask` (1) / `without_mask` (0) |
 
----
+### Exemples d'images (avec Data Augmentation)
 
-## 🛠️ Paramètres du Modèle
+<p align="center">
+  <img src="Images/1.png" width="850"/>
+</p>
+
+## 🛠️ Partie Matérielle — Paramètres du Modèle
 
 | Paramètre | Valeur |
 |---|---|
-| **Taille des images** | 128 × 128 |
+| **Taille des images** | 128 × 128 pixels |
 | **Batch size** | 32 |
-| **Epochs** | 10–20 |
+| **Epochs** | 10 |
 | **Optimizer** | Adam |
-| **Loss** | Binary Crossentropy |
+| **Loss function** | Binary Crossentropy |
 | **Métrique** | Accuracy |
+| **Modèle** | CNN |
 
----
+## 💻 Partie Logicielle (Software)
 
-## 💻 Technologies utilisées
+### 🧾 Technologies utilisées
 
-- Python 3  
-- TensorFlow / Keras  
-- CNN  
-- ImageDataGenerator  
-- Matplotlib / Seaborn  
-- Scikit-learn  
+| Technologie | Rôle |
+|---|---|
+| **Python 3** | Langage principal |
+| **TensorFlow / Keras** | Framework Deep Learning |
+| **CNN** | Modèle de classification |
+| **ImageDataGenerator** | Data Augmentation |
+| **Matplotlib / Seaborn** | Visualisation |
+| **Scikit-learn** | Matrice de confusion + rapport |
 
----
+## ⚙️ Architecture CNN
 
-## ⚙️ Architecture du CNN
+<p align="center">
+  <img src="Images/2.png" width="900"/>
+</p>
 
 ```python
 from tensorflow.keras.models import Sequential
@@ -80,6 +79,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 
 model = Sequential()
 
+# Convolution + Pooling
 model.add(Conv2D(32, (3,3), activation='relu', input_shape=(128,128,3)))
 model.add(MaxPooling2D(2,2))
 
@@ -89,11 +89,14 @@ model.add(MaxPooling2D(2,2))
 model.add(Conv2D(128, (3,3), activation='relu'))
 model.add(MaxPooling2D(2,2))
 
+# Flatten
 model.add(Flatten())
 
+# Dense Layers
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 
+# Output
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(optimizer='adam',
