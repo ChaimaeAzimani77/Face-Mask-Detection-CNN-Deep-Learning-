@@ -125,7 +125,7 @@ ImageDataGenerator(
 
 ## 🔨 Entraînement
 
-### Logs d'entraînement (10 epochs)
+### Logs d'entraînement (15 epochs)
 
 <p align="center">
   <img src="Images/3.png" width="750"/>
